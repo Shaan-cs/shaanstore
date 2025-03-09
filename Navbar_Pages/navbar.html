@@ -1,0 +1,34 @@
+<!-- Navbar -->
+<header class="head-container">
+    <div class="logo">
+        <img src="../Assets/G.png" alt="Logo">
+    </div>
+
+    <nav class="nav-class">
+        <a href="../Main page/Index.html">Home</a>
+        <a href="../Categories Pages/Indoor.html">Products</a>
+        <a href="../Main Page/main.html#about-us">About</a>
+    </nav>
+
+    <div class="right">
+        <a href="../Sign in page/sign.html" id="signIn">Sign In</a>
+
+        <a href="../Cart Pages/cart.html" id="cartIcon" style="position: relative;">
+            <img src="../Assets/cart.png" alt="Cart" style="width: 30px; border-radius: 50%; cursor:pointer;">
+            <span id="cartCount" style="color: whitesmoke;
+                  padding: 3px 8px; font-size: 16px; position: absolute; top: -5px; right: -10px; display: none;">
+                0
+            </span>
+        </a>
+
+        <div id="userProfile">
+            <img id="profileImg" src="../images/account icon.png" alt="User" 
+                 style="width: 30px; border-radius: 50%; cursor:pointer;">
+            <div id="profileDropdown" style="display: none; position: absolute; 
+                  background: white; padding: 10px;">
+                <p id="userName"></p>
+                <a href="../Main page/Index.html" onclick="logout()">Logout</a>
+            </div>
+        </div>
+    </div>
+</header>

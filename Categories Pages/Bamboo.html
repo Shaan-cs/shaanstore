@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bamboo Plants</title>
+
+    <link rel="stylesheet" href="../Navbar_Pages/navbar.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        } 
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .plant-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .plant-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .plant-card h3 {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .plant-card p {
+            font-size: 14px;
+            color: #555;
+        }
+        .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #28a745;
+        }
+        .add-to-cart {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .add-to-cart:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="navbarContainer"></div> <!-- Navbar will load here -->
+<script src="../Navbar_Pages/navbar.js"></script>
+    <h1>Bamboo Plants</h1>
+    <div class="container" id="plantsContainer"></div>
+    
+    <script>
+        const plants = [
+            { name: "Lucky Bamboo", img: "https://cdn.shopify.com/s/files/1/0047/9730/0847/products/nurserylive-plants-3-layer-lucky-bamboo-plant-in-a-bowl-with-pebbles-1-383367.jpg?v=1679748420", description: "Brings good fortune and easy to care for.", price: 499 },
+            { name: "Golden Bamboo", img: "https://m.media-amazon.com/images/I/616Nsy8sznL.jpg", description: "Fast-growing and perfect for privacy.", price: 699 },
+            { name: "Black Bamboo", img: "https://5.imimg.com/data5/SELLER/Default/2024/10/457543332/LH/TO/WU/97089337/black-bamboo.jpeg", description: "Elegant dark-colored stems, ornamental.", price: 799 },
+            { name: "Giant Bamboo", img: "https://media.licdn.com/dms/image/C4E12AQF021hQXlV80A/article-cover_image-shrink_720_1280/0/1529314591820?e=2147483647&v=beta&t=SRPInaAI4-iqXd-kbEQfPwNokcQJSge6_4dONmf0Dfs", description: "Tall and lush, perfect for landscaping.", price: 999 }
+        ];
+        
+        const container = document.getElementById("plantsContainer");
+        plants.forEach(plant => {
+            const div = document.createElement("div");
+            div.classList.add("plant-card");
+            div.innerHTML = `
+                <img src="${plant.img}" alt="${plant.name}">
+                <h3>${plant.name}</h3>
+                <p>${plant.description}</p>
+                <p class="price">₹${plant.price}</p>
+                <button class="add-to-cart" onclick="addToCart('${plant.name}', ${plant.price})">Add to Cart</button>
+            `;
+            container.appendChild(div);
+        });
+        
+        function addToCart(name, price, img) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let existingItem = cart.find(item => item.name === name);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({ name, price, img, quantity: 1 });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    // alert(name + " added to cart!");
+
+    updateCartCount(); // Navbar me count update kare
+}
+    </script>
+</body>
+</html>

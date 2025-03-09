@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indoor Plants</title>
+    <link rel="stylesheet" href="../Navbar_Pages/navbar.css">
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+    padding: 0;
+    width: 100%;
+        }
+
+        .container {
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .plant-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .plant-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .plant-card h3 {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .plant-card p {
+            font-size: 14px;
+            color: #555;
+        }
+        .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #28a745;
+        }
+        .add-to-cart {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .add-to-cart:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="navbarContainer"></div> <!-- Navbar will load here -->
+<script src="../Navbar_Pages/navbar.js"></script>
+    <h1>Indoor Plants</h1>
+    <div class="container" id="plantsContainer"></div>
+    
+    
+    <script>
+        const plants = [
+            { name: "Snake Plant", img: "https://images.squarespace-cdn.com/content/v1/54fbb611e4b0d7c1e151d22a/1610074066643-OP8HDJUWUH8T5MHN879K/Snake+Plant.jpg?format=1000w", description: "Air-purifying and low-maintenance plant.", price: 499 },
+            { name: "ZZ Plant", img: "https://nurturinggreen.in/cdn/shop/products/64_1080x.jpg?v=1647424430", description: "Perfect for beginners, thrives in low light.", price: 699 },
+            { name: "Peace Lily", img: "https://seed2plant.in/cdn/shop/files/SPR-variegated-peace-lily-domino-7097188-hero-A-422d7faa152d42d3a4030ff8a2a33768.jpg?v=1692362762&width=416", description: "Beautiful white blooms, improves indoor air quality.", price: 599 },
+            { name: "Aloe Vera", img: "https://i0.wp.com/theaffordableorganicstore.com/wp-content/uploads/2022/02/Products-49.jpg", price: 399 },
+            // { name: "Pothos", img: "https://cdn.shopify.com/s/files/1/1706/1307/products/Golden-Pothos-Potted-Plant-The-Sill.jpg", description: "Easy to grow, perfect for beginners.", price: 349 },
+            // { name: "Rubber Plant", img: "https://www.thespruce.com/thmb/uIvEozj9M_hsBLnZ1ZaBqUynJcU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/grow-rubber-tree-plants-1902771-hero-1-df5d207e6d41424e9b39c24d26e3b2d2.jpg", description: "Adds elegance with its deep green leaves.", price: 799 },
+            // { name: "Areca Palm", img: "https://www.plantopedia.com/wp-content/uploads/2021/01/Areca-Palm-Plant.jpg", description: "Tropical feel, ideal for indoors.", price: 899 },
+            // { name: "Boston Fern", img: "https://cdn.shopify.com/s/files/1/0013/3529/6118/products/BostonFerns_2000x.jpg", description: "Adds lush greenery to any room.", price: 499 }
+        ];
+        
+
+        const container = document.getElementById("plantsContainer");
+
+plants.forEach(plant => {
+    const div = document.createElement("div");
+    div.classList.add("plant-card");
+    div.innerHTML = `
+        <img src="${plant.img}" alt="${plant.name}">
+        <h3>${plant.name}</h3>
+        <p>${plant.description}</p>
+        <p class="price">₹${plant.price}</p>
+        <button class="add-to-cart" onclick="addToCart('${plant.name}', ${plant.price}, '${plant.img}')">
+            Add to Cart
+        </button>
+    `;
+    container.appendChild(div);
+});
+
+        // const container = document.getElementById("plantsContainer");
+        
+
+        function addToCart(name, price, img) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let existingItem = cart.find(item => item.name === name);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({ name, price, img, quantity: 1 });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    // alert(name + " added to cart!");
+
+    updateCartCount(); // Navbar me count update kare
+}
+
+    </script>
+
+    
+</body>
+</html>

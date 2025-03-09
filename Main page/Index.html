@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> <!-- Ensure proper scaling -->
+  <title>sHs GREEN Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="main.css">
+  <script src="https://cdn.tailwindcss.com" defer></script>
+  
+  <link rel="stylesheet" href="../Navbar_Pages/navbar.css">
+</head>
+
+
+<!--start Body of our Website-->
+
+<body>
+  <!-- Header -->
+
+  <div id="navbarContainer"></div> <!-- Navbar will load here -->
+  <script src="../Navbar_Pages/navbar.js"></script>
+
+<!-- hero section  -->
+  <section class="hero">
+    <div class="hero-content-box">
+      <div class="hero-left">
+        <h1 class="buy">Buy your <br>dream plants</br></h1>
+        <p class="hero-text">50+ Plant Species | 100+ Customers</p>
+        <div class="search-bar">
+          <input class="bar" placeholder="What are you looking for?" type="text">
+          <button class="search-butn"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--  Best selling Section -->
+
+  <div class="best-selling">
+    <div class="h3">
+      <h2 class="best">Best Selling Plants</h2>
+      <div class="best-dis">Easiest way to healthy life by buying your favorite plants</div>
+    </div>
+    <div class="product-container">
+      <div class="product">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0068/4215/5090/t/115/assets/5724ee3406dc--61b07dfe5e08-MoneyTree-LRGray-6-1_990x.jpg?v=1731571750"
+          alt="Product 1">
+        <h3>Money Tree Plant</h3>
+        <p>₹499</p>
+        <button class="buy-btn" onclick="buyNow('Money Tree Plant', 499)">Buy Now</button>
+      </div>
+      <div class="product">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0068/4215/5090/files/Pl_6in_Olive_Grower_01_e9b9560c-4572-4034-8a6b-ef5ffcb3ae26_990x.jpg?v=1727846562"
+          alt="Product 2">
+        <h3>Indoor Olive Tree</h3>
+        <p>₹799</p>
+        <button class="buy-btn" onclick="buyNow('Indoor Olive Tree', 799)">Buy Now</button>
+      </div>
+      <div class="product">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0068/4215/5090/files/e219a7ffa1f5--pl-MiniRoseYellow-4IN-pl-grower-3107da_730x.jpg?v=1721327280"
+          alt="Product 3">
+        <h3>Yellow Miniature Roses</h3>
+        <p>₹999</p>
+        <button class="buy-btn" onclick="buyNow('Yellow Miniature Roses', 999)">Buy Now</button>
+      </div>
+      <div class="product">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0068/4215/5090/files/6in_Cast-Iron-Plant_Grower_01_730x.jpg?v=1724103893"
+          alt="Product 4">
+        <h3>Cast Iron Plant</h3>
+        <p>₹499</p>
+        <button class="buy-btn" onclick="buyNow('Cast Iron Plant', 499)">Buy Now</button>
+      </div>
+      <div class="product">
+        <img
+          src="https://cdn.shopify.com/s/files/1/0068/4215/5090/files/5a2f1fe1a9bf--pl-AreciaButterflyPalm-4IN-po-grower-00b913_730x.jpg?v=1721325230"
+          alt="Product 5">
+        <h3>Areca Palm Indoor Tree</h3>
+        <p>₹799</p>
+        <button class="buy-btn" onclick="buyNow('Areca Palm Indoor Tree', 799)">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Categories Section -->
+
+  <div class="h2">
+    <h2 class="plant">Plant Categories</h2>
+    <div class="cate-dis">
+      <p>Your journey to a greener life starts here—pick your favorites!</p>
+    </div>
+  </div>
+
+  <div class="cate-container" id="categoryContainer">
+    <!-- Yahan JS se categories add hongi -->
+  </div>
+
+  <div class="btn"><button class="explore-btn" id="exploreBtn">Explore More</button></div>
+
+  <script>
+    //  Start All pages of Categories
+
+    // Mapping categories to their respective page filenames inside the "Categories page" folder
+
+
+
+    // Plants Categories Data (Images + Names)
+    const plants = [
+      { name: "Indoor Plants", img: "https://m.media-amazon.com/images/I/71Ac4jq-12L._AC_UF1000,1000_QL80_.jpg" },
+      { name: "Outdoor Plants", img: "https://bhoomigardencentre.com/wp-content/uploads/2023/12/Song-of-India-Tall-4.5-feet-1.jpg" },
+      { name: "Flowering Plants", img: "https://schoolofnaturalmedicine.com/wp-content/uploads/sites/15700/2023/08/angiosperm-1024x773.jpg" },
+
+      { name: "Cactus", img: "https://www.chhajedgarden.com/cdn/shop/files/Small-Indoor-Cactus-Set.jpg?v=1704794185" },
+
+      { name: "Bamboo Plants", img: "https://m.media-amazon.com/images/I/71Os5ARfDPL._AC_UF1000,1000_QL80_.jpg" },
+
+      { name: "Medicinal Plants", img: "https://nurserylive.com/cdn/shop/products/nurserylive-g-top-2-medicinal-plants-367746.jpg?v=1679750570" },
+
+      { name: "Bonsai", img: "https://media-uk.landmarkshops.in/cdn-cgi/image/h=1200,w=1200,q=85,fit=cover/homecentre/1000012527438-1000012527437_02-2100.jpg" },
+
+      { name: "Air Purifying Plants", img: "https://hips.hearstapps.com/hmg-prod/images/air-purifying-plants-1588597694.jpg?crop=0.8890666666666666xw:1xh;center,top&resize=1200:" },
+
+      { name: "Fruit Plants", img: "https://rukminim2.flixcart.com/image/850/1000/kle24cw0/plant-sapling/m/1/y/live-malpighia-barbados-cherry-fruit-plant-1-daivish-original-imagygpbzz9fvyfg.jpeg?q=90&crop=false" },
+      // { name: "Palm Plants", img: "https://bloomingfloret.in/cdn/shop/files/3_ac596361-f18e-42ff-a27a-a5e827e423e3.jpg?v=1704359609" },
+      // { name: "Herb Plants", img: "https://bloomingfloret.in/cdn/shop/files/BL-6096-2_1.jpg?v=1725017371" },
+      { name: "Aquatic Plants", img: "https://img.freepik.com/premium-photo/blooming-pink-lotus-flower-blooming-lotus-flower-pink-color-dark-background_1028938-307372.jpg" },
+      { name: "Hanging Plants", img: "https://mybageecha.com/cdn/shop/files/DischidiaruscifoliaMillionHeartsVariegated_3_75c9a974-2470-4cf4-8a3b-977656739bb2_1024x.jpg?v=1701772623" },
+      { name: "Ground Cover Plants", img: "https://images.finegardening.com/app/uploads/2022/01/27165202/fg204-shade-groundcovers-6.jpg" },
+      // { name: "Drought Resistant Plants", img: "https://images.squarespace-cdn.com/content/v1/561ebd74e4b071cdbbeebb84/1498085049424-T8GQ40CUHIY04XJ7KA4P/lewisia-cotyledon-0610.jpg" },
+      // { name: "Wild Plants", img: "https://www.outdoorapothecary.com/wp-content/uploads/2023/03/Untitled-1024-%C3%97-1024-px-2023-03-28T104603.854.jpg" },
+
+
+    ];
+
+    // Correct category page paths based on folder structure
+    const categoryPages = {
+      "Indoor Plants": "../Categories Pages/Indoor.html",
+      "Outdoor Plants": "../Categories Pages/Outdoor.html",
+      "Flowering Plants": "../Categories Pages/Flowering.html",
+      "Cactus": "../Categories Pages/Cactus.html",
+
+      "Bamboo Plants": "../Categories Pages/Bamboo.html",
+      "Medicinal Plants": "../Categories Pages/Medicinal.html",
+      "Bonsai": "../Categories Pages/Bonsai.html",
+      "Air Purifying Plants": "../Categories Pages/Air_purifing.html",
+
+      "Fruit Plants": "../Categories Pages/Fruit.html",
+  
+
+      "Aquatic Plants": "../Categories Pages/Aquatic.html",
+
+
+      "Hanging Plants": "../Categories Pages/Hanging.html",
+      "Ground Cover Plants": "../Categories Pages/Ground.html",
+      
+    };
+
+    // Get category container
+    const categoryContainer = document.getElementById("categoryContainer");
+
+    // Generate categories dynamically
+    plants.forEach((plant, index) => {
+      const div = document.createElement("div");
+      div.classList.add("category");
+      if (index < 10) div.style.display = "block"; // Show first 10 categories by default
+
+      // Create category structure with correct link
+      div.innerHTML = `
+        <a href="${categoryPages[plant.name]}" style="text-decoration: none; color: inherit;">
+            <img src="${plant.img}" alt="${plant.name}">
+            <h3>${plant.name}</h3>
+        </a>
+    `;
+
+      categoryContainer.appendChild(div);
+    });
+
+    // Explore More Button Functionality
+    document.getElementById("exploreBtn").addEventListener("click", function () {
+      document.querySelectorAll(".category").forEach(item => item.style.display = "block");
+      this.style.display = "none"; // Hide button after expanding
+    });
+
+  </script>
+  <!-- About section -->
+
+  <section id="about-us" class="about-us-slider">
+
+    <h2>About Us</h2>
+    <div class="slider">
+      <!-- Slide 1 -->
+      <div class="slide active">
+        <i class="fas fa-heart"></i>
+        <h3>Our Mission</h3>
+        <p>At sHs GREEN Store, our mission is to make greenery accessible to everyone by providing a diverse range
+          of high-quality plants that bring freshness, beauty, and sustainability into every space.<b>
+            <br>Offering 50+ plant categories, from indoor décor to outdoor gardens.
+            <br>Providing expert guidance to help customers nurture their plants.
+            <br>Ensuring eco-friendly practices to contribute to a sustainable planet.
+            <br>Creating a community of plant lovers who share our passion for greenery.
+            <br><br>Join us in our journey to bring nature closer to life! 🌿💚</p>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide">
+        <i class="fas fa-users"></i>
+        <h3>Our Team</h3>
+        <p>🌿 Meet the Minds Behind sHs GREEN Store 🌿
+          At sHs GREEN Store, we’re more than just a team—we’re a community of plant enthusiasts, horticulture
+          specialists, and eco-conscious innovators driven by a shared mission: to bring nature into every home. 🌱✨</p>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide">
+        <i class="fas fa-star"></i>
+        <h3>Why Choose Us?</h3>
+        <p><b> Premium Quality Plants </b>– Handpicked, healthy, and well-nurtured plants.
+          <br><b>Expert Guidance – </b>Get the best tips on plant care and maintenance.
+          <br><b>Affordable Prices –</b> Bringing greenery to your space without breaking the bank.
+          <br><b>Eco-Friendly Approach –</b> We promote sustainable gardening practices.
+          <br><b>Trusted by Customers – </b>Hundreds of happy plant lovers trust our quality and service.<br>
+
+          <br>We believe that plants bring positivity, fresh air, and beauty to life, and our mission is to make
+          greenery accessible to every home and workplace. Join us in making the world greener and more vibrant,
+          one plant at a time! 🌱💚
+        </p>
+      </div>
+    </div>
+    <div class="slider-controls">
+      <button class="prev"><i class="fas fa-chevron-left"></i></button>
+      <button class="next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </section>
+
+  <section id="services">
+
+    <div class="services-box">
+      <div class="service">
+        <i class="fas fa-leaf text-4xl"></i>
+        <h3>Large Assortment</h3>
+        <p>We offer many different types of products with fewer variations in each category.</p>
+      </div>
+      <div class="service">
+        <i class="fas fa-shipping-fast text-4xl"></i>
+        <h3>Fast & Free Shipping</h3>
+        <p>4-day or less delivery time, free shipping and an expedited delivery option.</p>
+      </div>
+      <div class="service">
+        <i class="fas fa-headset text-4xl"></i>
+        <h3>24/7 Support</h3>
+        <p>Answers to any business-related inquiry 24/7 and in real-time.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // script.js
+    document.addEventListener('DOMContentLoaded', function () {
+      const slides = document.querySelectorAll('.slide');
+      const prevButton = document.querySelector('.prev');
+      const nextButton = document.querySelector('.next');
+      let currentSlide = 0;
+
+      // Show the first slide
+      showSlide(currentSlide);
+
+      // Next button functionality
+      nextButton.addEventListener('click', function () {
+        currentSlide++;
+        if (currentSlide >= slides.length) {
+          currentSlide = 0;
+        }
+        showSlide(currentSlide);
+      });
+
+      // Previous button functionality
+      prevButton.addEventListener('click', function () {
+        currentSlide--;
+        if (currentSlide < 0) {
+          currentSlide = slides.length - 1;
+        }
+        showSlide(currentSlide);
+      });
+
+      // Function to show a specific slide
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.remove('active');
+          if (i === index) {
+            slide.classList.add('active');
+          }
+        });
+      }
+    });
+
+  </script>
+
+  <!-- Testimonials Section -->
+
+  <section class="py-16 ">
+    <div class="container mx-auto text-center">
+      <h2 class="customer-heading">What customers say about sHs GREEN Store?</h2>
+      <div class="testimonial-scroll-wrapper overflow-x-auto flex space-x-4 p-4">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card">
+          <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Person 1">
+          <p>"GreenMind's plants transformed my home! Excellent quality and service."</p>
+          <h4>— John Doe</h4>
+        </div>
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Person 2">
+          <p>"The best plant shopping experience! Highly recommend."</p>
+          <h4>— Sarah Lee</h4>
+        </div>
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card">
+          <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Person 3">
+          <p>"My plants arrived fresh and healthy. Love them!"</p>
+          <h4>— Michael Smith</h4>
+        </div>
+        <!-- Testimonial 4 -->
+        <div class="testimonial-card">
+          <img src="https://randomuser.me/api/portraits/women/4.jpg" alt="Person 4">
+          <p>"Great variety and fast delivery. I'm a happy customer!"</p>
+          <h4>— Emma Watson</h4>
+        </div>
+        <!-- Testimonial 5 -->
+        <div class="testimonial-card">
+          <img src="https://randomuser.me/api/portraits/men/5.jpg" alt="Person 5">
+          <p>"Affordable prices with premium quality. Love it!"</p>
+          <h4>— David Johnson</h4>
+        </div>
+        <!-- Testimonial 6 -->
+        <div class="testimonial-card">
+          <img src="https://randomuser.me/api/portraits/women/6.jpg" alt="Person 6">
+          <p>"A great way to bring greenery into your home!"</p>
+          <h4>— Olivia Brown</h4>
+        </div>
+        <!-- Testimonial 7 -->
+        <div class="testimonial-card">
+          <img src="https://randomuser.me/api/portraits/men/7.jpg" alt="Person 7">
+          <p>"Super fresh plants and excellent customer service!"</p>
+          <h4>— William Davis</h4>
+        </div>
+        <!-- Testimonial 8 -->
+        <div class="testimonial-card">
+          <img src="https://randomuser.me/api/portraits/women/8.jpg" alt="Person 8">
+          <p>"Best online plant store! Highly recommended."</p>
+          <h4>— Sophia Wilson</h4>
+        </div>
+        <!-- Testimonial 9 -->
+        <div class="testimonial-card">
+          <img src="https://randomuser.me/api/portraits/men/9.jpg" alt="Person 9">
+          <p>"Fantastic selection and reasonable prices!"</p>
+          <h4>— James Anderson</h4>
+        </div>
+        <!-- Testimonial 10 -->
+        <div class="testimonial-card">
+          <img src="https://randomuser.me/api/portraits/women/10.jpg" alt="Person 10">
+          <p>"GreenMind made plant shopping so easy. Love my new plants!"</p>
+          <h4>— Emily Martinez</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer Section -->
+
+  <footer class="footer">
+    <div class="container">
+
+
+      <div class="logo-div">
+        <p class="logo-footer">sHs <br>GREEN Store</p>
+        <div class="tagline">We help you find your dream plant</div>
+      </div>
+
+      <!-- Middle Section (3 Columns) -->
+      <div class="footer-columns">
+
+        <!-- Information -->
+        <div>
+          <h4>Information</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Career</a></li>
+            <li><a href="#">Our Story</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="#contacts">Getting Started</a></li>
+            <li><a href="#contacts">Pricing</a></li>
+            <li><a href="#contacts">Resources</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <p>2025 All Rights Reserved | Terms of Use | sHs GREEN Store</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+
+
+  <script>
+    function toggleMoreItems() {
+      const moreItems = document.getElementById('moreItems');
+      moreItems.classList.toggle('hidden');
+    }
+  </script>
+
+  <!---star here js for  change sign in  to icons  -->
+
+  <script>
+    window.onload = function () {
+      let isLoggedIn = localStorage.getItem("isLoggedIn");
+      let userName = localStorage.getItem("userName");
+
+      if (isLoggedIn === "true") {
+        document.getElementById("signIn").style.display = "none"; // Hide "Sign In"
+        document.getElementById("cartIcon").style.display = "inline-block"; // Show Cart Icon
+        document.getElementById("userProfile").style.display = "inline-block"; // Show Account Icon
+        document.getElementById("userName").innerText = userName; // Show User Name
+      }
+    };
+
+    // ✅ Toggle Profile Dropdown
+    document.getElementById("profileImg").addEventListener("click", function () {
+      let dropdown = document.getElementById("profileDropdown");
+      dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+    });
+
+    // ✅ Logout Function
+    function logout() {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("userName");
+      localStorage.removeItem("userEmail");
+      window.location.href = "main.html"; // Redirect to main page after logout
+    }
+  </script>
+
+  <script>
+    function buyNow(productName, productPrice) {
+   let isLoggedIn = localStorage.getItem("isLoggedIn");
+
+   if (isLoggedIn !== "true") {
+     // ✅ Save checkout page & selected product before redirecting
+     localStorage.setItem("redirectAfterLogin", "../payment page/pay.html");
+     localStorage.setItem("checkoutProduct", JSON.stringify({ name: productName, price: productPrice }));
+
+     // ✅ Redirect to Sign In Page
+     window.location.href = "../Sign in page/sign.html";
+     return;
+   }
+
+   // ✅ User is logged in → Proceed to Checkout Page
+   localStorage.setItem("checkoutProduct", JSON.stringify({ name: productName, price: productPrice }));
+   window.location.href = "../payment page/pay.html";
+}
+
+  </script>
+
+</body>
+
+</html>

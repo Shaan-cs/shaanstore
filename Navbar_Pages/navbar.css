@@ -1,0 +1,181 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Cart & Account icons ke beech proper gap */
+    margin-right: 30px; /*  Right side se extra space */
+}
+
+/* ✅ Profile aur Cart Icons ka spacing fix */
+#cartIcon {
+
+    border-radius: 50;
+    border: 1px;
+    font-size: 18px;
+    margin-right: 8px; /* ✅ Right side se extra space */
+    margin-top: 6px;
+}
+
+#userProfile {
+    position: relative;
+    margin-left: 10px; /* ✅ Cart & Profile icons ke beech spacing */
+    margin-top: 6px;
+}
+
+/* ✅ Profile Dropdown Styling */
+#profileDropdown {
+    display: none;
+    visibility: visible !important;
+    position: absolute;
+    right: 0;
+    top: 35px;
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+/* ✅ Logout Button Styling */
+#logoutBtn {
+    display: block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #dc3545;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.head-container {
+
+    background-color: #106466;
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 55px;
+
+    margin: 0 auto;
+}
+
+/* Logo Section */
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.logo img {
+    width: 36px;
+    border-radius: 50px;
+}
+
+/* Navigation Links - Positioned Next to Logo */
+
+.nav-class {
+    display: flex;
+    gap: 20px;
+    /* 20px gap from logo */
+    margin-left: 20px;
+}
+
+.nav-class a {
+    text-decoration: none;
+    color: #bdc3c7;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-class a:hover {
+    color: #030404;
+}
+
+/* Right Section  in navebar (Sign In) */
+
+.right {
+    margin-left: auto;
+    /* Pushes Sign In to the right */
+    margin-right: 30px;
+    /* Ensures spacing on the right */
+    height: 35px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.logo img {
+    width: 36px;
+    border: 1px #c9e1d9ed;
+    border-radius: 50px;
+}
+
+
+
+/*Responsive Design for Mobile */
+
+@media (max-width: 768px) {
+    .head-container {
+        left: 12px;
+        right: 12px;
+        max-width: calc(100% - 24px);
+        /* 12px space from both sides */
+        padding: 5px 10px;
+        height: 50px;
+    }
+
+    .logo img {
+        width: 30px;
+        /* Smaller logo */
+    }
+
+    .nav-class {
+        gap: 10px;
+        /* Reduce spacing between links */
+        margin-left: 10px;
+    }
+
+    .nav-class a {
+        font-size: 14px;
+        /* Reduce font size */
+    }
+
+
+
+    .right {
+        margin-right: 5px;
+        /* Ensures Sign In button is visible */
+    }
+
+    .right a {
+        padding: 5px 8px;
+        font-size: 14px;
+    }
+} 
+
+#profileDropdown {
+    display: none;
+    position: absolute;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#profileDropdown.show {
+    display: block;
+}
+

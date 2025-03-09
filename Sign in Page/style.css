@@ -1,0 +1,124 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    /* margin:10px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    /* background: #1e1e1e; */
+    color: #5c5c5c;
+    overflow: hidden;
+    position: relative;
+
+    
+        background-image: url('https://images.pexels.com/photos/158507/marigold-calendula-orange-blossom-158507.jpeg?cs=srgb&dl=pexels-pixabay-158507.jpg&fm=jpg&_gl=1*u9axob*_ga*MTk1MDExNzI0Mi4xNzM5OTkzMDc4*_ga_8JE65Q40S6*MTc0MDMyNTE5NS41LjEuMTc0MDMyNTk5Ny4wLjAuMA.'); /* Image ka path */
+        background-size: cover; /* Puri body ko cover kare */
+        background-repeat: no-repeat; /* Image repeat na ho */
+        background-position: center center; /* Beech mein set ho */
+        height: 100vh; /* Puri screen height le */
+        margin: 0;
+
+}
+
+.circle {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 25px;
+    backdrop-filter: blur(1px);
+    width: 80%;
+    max-width: 300px;
+  
+}
+input, button, label {
+    /* display: flex; */
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size:12px;
+}
+
+button {
+    background: #5898d8;
+    color: #5c5c5c;
+    cursor: pointer;
+    font-weight:bold;
+    font-size:14px;
+}
+
+#create-account {
+    color: #004dab;
+
+}
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white ;
+}
+.google-btn img {
+    width: 20px;
+    margin-right: 10px;
+}
+.atom {
+    /* background-color:red; */
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    /* border:1px solid #e0bfbf; */
+    border-radius:   50%;
+    animation: spin 10s linear infinite;
+}
+.electron {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #f5e20a;
+    border-radius: 50%;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+.dont{
+font-size: 12px;
+    display:flex;
+    align-items:center;
+    /* text-aligncenter; */
+    justify-content:center;
+    gap:8px;
+    font-weight:bold;
+
+}
+label {
+    display: flex;
+    align-items: center;
+    margin-top:-1px;
+    margin-bottom:-1px;
+    gap: 8px; /* Checkbox aur text ke beech thoda gap */
+}
+
+input[type="checkbox"] {
+    width: 16px;
+    accent-color: #5898d8; /* Checkbox ka color match karne ke liye */
+}

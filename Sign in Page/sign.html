@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="circle">
+        <div class="atom">
+            <div class="electron" style="top: -10px; left: 50%;"></div>
+            <div class="electron" style="bottom: -10px; right: 50%;"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Welcome Back!</h2>
+
+        <!-- ✅ Updated Login Form -->
+        <form id="loginForm">
+            <input type="text" id="name" placeholder="Enter Your Name" required>
+            <input type="email" id="email" placeholder="Enter Your Email" required>
+            <input type="password" id="password" placeholder="Enter Your Password" required>
+            <label><input type="checkbox" required> Accept Terms & Conditions</label>
+            <button type="submit">Login</button>
+        </form>
+
+        <p class="dont">Don't have an account? <span id="create-account" style="cursor: pointer;">Sign Up</span></p>
+    </div>
+
+    <script>
+        // ✅ Save User Details in localStorage & Redirect to Main Page
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Stop default form submission
+
+            // Get user details
+            let userName = document.getElementById("name").value;
+            let userEmail = document.getElementById("email").value;
+
+            // Save user data in localStorage
+            localStorage.setItem("userName", userName);
+            localStorage.setItem("userEmail", userEmail);
+            localStorage.setItem("isLoggedIn", "true");
+
+            // ✅ Redirect to Main Page
+            window.location.href ="../Main page/Index.html"; // Update the path if needed
+        });
+
+        // ✅ Sign-Up Fields Show/Hide
+        document.getElementById('create-account').addEventListener('click', function() {
+            let container = document.querySelector('.container');
+            if (!document.getElementById('first-name')) {
+                let firstName = document.createElement('input');
+                firstName.placeholder = 'First Name';
+                firstName.id = 'first-name';
+
+                let lastName = document.createElement('input');
+                lastName.placeholder = 'Last Name';
+                lastName.id = 'last-name';
+
+                container.insertBefore(firstName, container.children[1]);
+                container.insertBefore(lastName, container.children[2]);
+            }
+        });
+    </script>
+</body>
+</html>

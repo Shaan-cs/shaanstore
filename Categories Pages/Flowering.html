@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowering Plants</title>
+
+    <link rel="stylesheet" href="../Navbar_Pages/navbar.css">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .plant-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .plant-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .plant-card h3 {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .plant-card p {
+            font-size: 14px;
+            color: #555;
+        }
+        .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #28a745;
+        }
+        .add-to-cart {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .add-to-cart:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="navbarContainer"></div> <!-- Navbar will load here -->
+<script src="../Navbar_Pages/navbar.js"></script>
+    <h1>Flowering Plants</h1>
+    <div class="container" id="plantsContainer"></div>
+    
+    <script>
+        const plants = [
+            { name: "Rose", img: "https://erwon.in/wp-content/uploads/2024/03/Rimi_Garden_Rose_-Care_Sansar_Green.jpg", description: "Classic and fragrant.", price: 399 },
+            { name: "Tulip", img: "https://upjau.in/wp-content/uploads/2024/08/Tulip.webp", description: "Bright and beautiful colors.", price: 499 },
+            { name: "Lily", img: "https://www.jiomart.com/images/product/original/rvjtduxsow/paryavaraan-bulbs-asiatic-lily-flower-bulbs-pink-color-flower-bulbs-for-home-gardening-pack-of-10-bulbs-product-images-orvjtduxsow-p606524669-0-202312050627.jpg?im=Resize=(1000,1000)", description: "Elegant and aromatic blooms.", price: 599 },
+            { name: "Marigold", img: "https://dukaan.b-cdn.net/700x700/webp/730950/570a0a01-8039-4174-b518-9bf54edfe5fb/onlineplantscart-e22a32d1-f5ba-4935-b072-156a25ed95d2.jpg", description: "Bright orange and yellow flowers.", price: 299 }
+        ];
+        
+        const container = document.getElementById("plantsContainer");
+        plants.forEach(plant => {
+            const div = document.createElement("div");
+            div.classList.add("plant-card");
+            div.innerHTML = `
+                <img src="${plant.img}" alt="${plant.name}">
+                <h3>${plant.name}</h3>
+                <p>${plant.description}</p>
+                <p class="price">₹${plant.price}</p>
+                <button class="add-to-cart" onclick="addToCart('${plant.name}', ${plant.price})">Add to Cart</button>
+            `;
+            container.appendChild(div);
+        });
+        
+        
+        function addToCart(name, price, img) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let existingItem = cart.find(item => item.name === name);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({ name, price, img, quantity: 1 });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    // alert(name + " added to cart!");
+
+    updateCartCount(); // Navbar me count update kare
+}
+    </script>
+</body>
+</html>
